@@ -1,29 +1,44 @@
 package it.unicam.cs.terravalore.model;
 
+import jakarta.persistence.*;
 import java.util.List;
 
 /**
  * La classe PuntoInteresse rappresenta un punto di interesse.
  */
+@Entity
+@Table(name = "punto_interesse")
 public class PuntoInteresse {
-    private String id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nome;
     private String descrizione;
     private String tipo; // Fisico o Logico
+
+    @ManyToOne
+    @JoinColumn(name = "comune_id")
     private Comune comune;
+
+    @OneToMany(mappedBy = "puntoDiInteresse")
     private List<Contenuto> contenuti;
+
+    // Costruttore senza argomenti richiesto da JPA
+    public PuntoInteresse() {
+    }
 
     /**
      * Costruttore della classe PuntoInteresse.
      *
-     * @param id L'identificativo del punto di interesse.
      * @param nome Il nome del punto di interesse.
      * @param descrizione La descrizione del punto di interesse.
      * @param tipo Il tipo del punto di interesse (Fisico o Logico).
      * @param comune Il comune associato al punto di interesse.
+     * @param contenuti La lista dei contenuti associati al punto di interesse.
      */
-    public PuntoInteresse(String id, String nome, String descrizione, String tipo, Comune comune, List<Contenuto> contenuti) {
-        this.id = id;
+    public PuntoInteresse(String nome, String descrizione, String tipo, Comune comune, List<Contenuto> contenuti) {
         this.nome = nome;
         this.descrizione = descrizione;
         this.tipo = tipo;
@@ -32,11 +47,11 @@ public class PuntoInteresse {
     }
 
     // Getter e Setter
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -80,5 +95,3 @@ public class PuntoInteresse {
         this.contenuti = contenuti;
     }
 }
-
-

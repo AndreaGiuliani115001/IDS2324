@@ -1,15 +1,31 @@
 package it.unicam.cs.terravalore.model;
 
+import jakarta.persistence.*;
 import java.util.List;
 
 /**
  * La classe Comune rappresenta un comune e le sue informazioni rilevanti.
  */
+@Entity
+@Table(name = "comune")
 public class Comune {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nome;
     private String descrizione;
+
+    @OneToMany(mappedBy = "comune")
     private List<PuntoInteresse> puntiDiInteresse;
+
+    @OneToMany(mappedBy = "comune")
     private List<Itinerario> itinerari;
+
+    // Costruttore senza argomenti richiesto da JPA
+    public Comune() {
+    }
 
     /**
      * Costruttore della classe Comune.
@@ -27,6 +43,14 @@ public class Comune {
     }
 
     // Getter e Setter
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -59,5 +83,3 @@ public class Comune {
         this.itinerari = itinerari;
     }
 }
-
-

@@ -1,9 +1,14 @@
 package it.unicam.cs.terravalore.model.utenti;
 
+import jakarta.persistence.MappedSuperclass;
+
 /**
  * La classe astratta Utente rappresenta la base per tutti i tipi di utenti della piattaforma.
  */
+
+@MappedSuperclass
 public abstract class Utente {
+
     private String nome;
     private String cognome;
     private String mail;
@@ -11,14 +16,18 @@ public abstract class Utente {
     /**
      * Costruttore della classe Utente.
      *
-     * @param nome Il nome dell'utente.
+     * @param nome    Il nome dell'utente.
      * @param cognome Il cognome dell'utente.
-     * @param mail L'email dell'utente.
+     * @param mail    L'email dell'utente.
      */
     public Utente(String nome, String cognome, String mail) {
         this.nome = nome;
         this.cognome = cognome;
         this.mail = mail;
+    }
+
+
+    public Utente() {
     }
 
     // Getter e Setter

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punti di Interesse</title>
+</head>
+<body>
+<h1>Punti di Interesse</h1>
+<ul>
+    <th:block th:each="punto: ${puntiDiInteresse}">
+        <li>
+            <h2 th:text="${punto.nome}">Nome Punto</h2>
+            <p th:text="${punto.descrizione}">Descrizione Punto</p>
+            <p th:text="${punto.tipo}">Tipo Punto</p>
+            <p th:text="${punto.comune.nome}">Comune</p>
+        </li>
+    </th:block>
+</ul>
+</body>
+</html>
