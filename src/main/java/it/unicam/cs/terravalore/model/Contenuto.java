@@ -1,6 +1,7 @@
 package it.unicam.cs.terravalore.model;
 
 import jakarta.persistence.*;
+
 import java.util.Date;
 
 /**
@@ -16,7 +17,7 @@ public class Contenuto {
 
     private String tipo; // Testo, Immagine, Video, ecc.
     private Date dataCaricamento;
-    private String stato; // In attesa, Approvato, Rifiutato
+    private boolean stato; // In attesa, Approvato, Rifiutato
 
     @ManyToOne
     @JoinColumn(name = "punto_interesse_id")
@@ -29,12 +30,12 @@ public class Contenuto {
     /**
      * Costruttore della classe Contenuto.
      *
-     * @param tipo Il tipo di contenuto (Testo, Immagine, Video, ecc.).
-     * @param dataCaricamento La data di caricamento del contenuto.
-     * @param stato Lo stato del contenuto (In attesa, Approvato, Rifiutato).
+     * @param tipo             Il tipo di contenuto (Testo, Immagine, Video, ecc.).
+     * @param dataCaricamento  La data di caricamento del contenuto.
+     * @param stato            Lo stato del contenuto (In attesa, Approvato, Rifiutato).
      * @param puntoDiInteresse Il punto di interesse associato al contenuto.
      */
-    public Contenuto(String tipo, Date dataCaricamento, String stato, PuntoInteresse puntoDiInteresse) {
+    public Contenuto(String tipo, Date dataCaricamento, boolean stato, PuntoInteresse puntoDiInteresse) {
         this.tipo = tipo;
         this.dataCaricamento = dataCaricamento;
         this.stato = stato;
@@ -66,11 +67,11 @@ public class Contenuto {
         this.dataCaricamento = dataCaricamento;
     }
 
-    public String getStato() {
+    public boolean getStato() {
         return stato;
     }
 
-    public void setStato(String stato) {
+    public void setStato(boolean stato) {
         this.stato = stato;
     }
 

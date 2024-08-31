@@ -1,6 +1,7 @@
 package it.unicam.cs.terravalore.model;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 /**
@@ -30,10 +31,10 @@ public class Comune {
     /**
      * Costruttore della classe Comune.
      *
-     * @param nome Il nome del comune.
-     * @param descrizione La descrizione del comune.
+     * @param nome             Il nome del comune.
+     * @param descrizione      La descrizione del comune.
      * @param puntiDiInteresse La lista dei punti di interesse nel comune.
-     * @param itinerari La lista degli itinerari associati al comune.
+     * @param itinerari        La lista degli itinerari associati al comune.
      */
     public Comune(String nome, String descrizione, List<PuntoInteresse> puntiDiInteresse, List<Itinerario> itinerari) {
         this.nome = nome;

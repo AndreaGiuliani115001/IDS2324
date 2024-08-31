@@ -1,6 +1,7 @@
 package it.unicam.cs.terravalore.model;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 /**
@@ -32,11 +33,11 @@ public class PuntoInteresse {
     /**
      * Costruttore della classe PuntoInteresse.
      *
-     * @param nome Il nome del punto di interesse.
+     * @param nome        Il nome del punto di interesse.
      * @param descrizione La descrizione del punto di interesse.
-     * @param tipo Il tipo del punto di interesse (Fisico o Logico).
-     * @param comune Il comune associato al punto di interesse.
-     * @param contenuti La lista dei contenuti associati al punto di interesse.
+     * @param tipo        Il tipo del punto di interesse (Fisico o Logico).
+     * @param comune      Il comune associato al punto di interesse.
+     * @param contenuti   La lista dei contenuti associati al punto di interesse.
      */
     public PuntoInteresse(String nome, String descrizione, String tipo, Comune comune, List<Contenuto> contenuti) {
         this.nome = nome;

@@ -1,57 +1,49 @@
 package it.unicam.cs.terravalore.model.utenti;
 
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 
-/**
- * La classe astratta Utente rappresenta la base per tutti i tipi di utenti della piattaforma.
- */
-
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED) // Strategia JOINED per ereditarietà
 public abstract class Utente {
 
-    private String nome;
-    private String cognome;
-    private String mail;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    /**
-     * Costruttore della classe Utente.
-     *
-     * @param nome    Il nome dell'utente.
-     * @param cognome Il cognome dell'utente.
-     * @param mail    L'email dell'utente.
-     */
-    public Utente(String nome, String cognome, String mail) {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.mail = mail;
+    private String username;
+    private String password;
+    private boolean active;
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
     }
 
-
-    public Utente() {
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    // Getter e Setter
-    public String getNome() {
-        return nome;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getCognome() {
-        return cognome;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getMail() {
-        return mail;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

@@ -1,6 +1,7 @@
 package it.unicam.cs.terravalore.model;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 /**
@@ -37,10 +38,10 @@ public class Itinerario {
     /**
      * Costruttore della classe Itinerario.
      *
-     * @param nome Il nome dell'itinerario.
-     * @param descrizione La descrizione dell'itinerario.
-     * @param approvazione Lo stato di approvazione dell'itinerario.
-     * @param comune Il comune associato all'itinerario.
+     * @param nome                  Il nome dell'itinerario.
+     * @param descrizione           La descrizione dell'itinerario.
+     * @param approvazione          Lo stato di approvazione dell'itinerario.
+     * @param comune                Il comune associato all'itinerario.
      * @param listaPuntiDiInteresse La lista dei punti di interesse associati all'itinerario.
      */
     public Itinerario(String nome, String descrizione, Boolean approvazione, Comune comune, List<PuntoInteresse> listaPuntiDiInteresse) {
