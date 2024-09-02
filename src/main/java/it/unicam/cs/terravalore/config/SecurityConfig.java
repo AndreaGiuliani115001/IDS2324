@@ -15,18 +15,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())  // Disabilitare CSRF usando la configurazione lambda
-                .authorizeHttpRequests(auth -> auth  // Utilizzo di authorizeHttpRequests per le regole di autorizzazione
-                        .requestMatchers("/","/login","/puntiInteresse/comune/**", "/contenuti/puntoInteresse/**").permitAll()  // Usare requestMatchers al posto di antMatchers
-                        .anyRequest().authenticated())
+                .csrf(csrf -> csrf.disable())  // Disabilitare CSRF se non necessario
+                .authorizeHttpRequests(auth -> auth  // Autorizzazione delle richieste
+                        .requestMatchers("/", "/login", "/puntiInteresse/comune/**", "/contenuti/puntoInteresse/**").permitAll()  // Endpoint pubblici
+                        .anyRequest().authenticated())  // Tutto il resto richiede autenticazione
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/dashboard", true)
-                        .permitAll())
+                        .permitAll())  // Configurazione del login
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/").permitAll());
-        return http.build();
+                        .logoutSuccessUrl("/").permitAll());  // Configurazione del logout
 
+        return http.build();
     }
 
     @Bean

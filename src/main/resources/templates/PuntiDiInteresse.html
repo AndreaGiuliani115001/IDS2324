@@ -3,24 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punti di Interesse</title>
+    <title>Punti di Interesse del Comune</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="text-center">Punti di Interesse del Comune</h1>
+    <h1 class="text-center mb-4">Punti di Interesse del Comune</h1>
     <div class="row">
         <div th:each="punto : ${puntiDiInteresse}" class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card shadow-sm h-100">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${punto.nome}">Nome Punto</h5>
                     <p class="card-text" th:text="${punto.descrizione}">Descrizione</p>
                     <p class="card-text"><strong>Tipo:</strong> <span th:text="${punto.tipo}">Tipo</span></p>
-                    <a th:href="@{/contenuti/puntoInteresse/{puntoId}(puntoId=${punto.id})}" class="btn btn-info">Visualizza
-                        Contenuti</a>
+                    <a th:href="@{/contenuti/puntoInteresse/{puntoId}(puntoId=${punto.id})}" class="btn btn-info">Visualizza Contenuti</a>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Sezione visibile solo ai Contributori -->
+    <div th:if="${isContributore}" class="mt-5">
+        <h2 class="text-center">Sezione Contributore</h2>
+        <!-- Contenuti specifici per il Contributore -->
+        <p class="text-center">Qui puoi aggiungere contenuti specifici per i Contributori.</p>
+    </div>
+
+    <!-- Sezione visibile solo ai guest/non autenticati -->
+    <div th:if="${isGuest}" class="mt-5">
+        <h2 class="text-center">Sezione Guest</h2>
+        <!-- Contenuti specifici per il Guest -->
+        <p class="text-center">Qui puoi aggiungere contenuti specifici per i visitatori non autenticati.</p>
     </div>
 </div>
 
