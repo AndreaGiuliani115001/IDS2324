@@ -1,5 +1,6 @@
 package it.unicam.cs.terravalore.service;
 
+import it.unicam.cs.terravalore.model.utenti.Utente;
 import it.unicam.cs.terravalore.model.Comune;
 import it.unicam.cs.terravalore.repository.ComuneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,4 +17,10 @@ public class ComuneService {
     public List<Comune> findAll() {
         return comuneRepository.findAll();
     }
+
+
+    public List<Comune> findAllByUser(Utente utente) {
+        return comuneRepository.findByUtenti_Id(utente.getId());
+    }
+
 }

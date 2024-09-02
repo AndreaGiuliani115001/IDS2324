@@ -16,12 +16,7 @@ public class PuntoInteresseService {
     @Autowired
     private PuntoInteresseRepository puntoInteresseRepository;
 
-    /**
-     * Trova tutti i punti di interesse.
-     *
-     * @return La lista di tutti i punti di interesse.
-     */
-    public List<PuntoInteresse> trovaTuttiPuntiDiInteresse() {
-        return puntoInteresseRepository.findAll();
+    public List<PuntoInteresse> findByComuneId(Long comuneId) {
+        return puntoInteresseRepository.findByComuneId(comuneId);
     }
 }

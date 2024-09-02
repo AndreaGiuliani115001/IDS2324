@@ -1,8 +1,10 @@
 package it.unicam.cs.terravalore.model;
 
+import it.unicam.cs.terravalore.model.utenti.Utente;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * La classe Comune rappresenta un comune e le sue informazioni rilevanti.
@@ -23,6 +25,9 @@ public class Comune {
 
     @OneToMany(mappedBy = "comune")
     private List<Itinerario> itinerari;
+
+    @ManyToMany(mappedBy = "comuniAssociati")
+    private Set<Utente> utenti;
 
     // Costruttore senza argomenti richiesto da JPA
     public Comune() {

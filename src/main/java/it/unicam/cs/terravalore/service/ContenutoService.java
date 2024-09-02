@@ -13,7 +13,7 @@ public class ContenutoService {
     @Autowired
     private ContenutoRepository contenutoRepository;
 
-    public List<Contenuto> findAll() {
-        return contenutoRepository.findAll();
+    public List<Contenuto> findByPuntoInteresseId(Long puntoInteresseId) {
+        return contenutoRepository.findByPuntoInteresseId(puntoInteresseId);
     }
 }

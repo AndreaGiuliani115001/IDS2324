@@ -15,10 +15,10 @@ public class ComuneController {
     @Autowired
     private ComuneService comuneService;
 
-    @GetMapping("/comuni")
+    @GetMapping("/")
     public String getComuni(Model model) {
         List<Comune> comuni = comuneService.findAll();
         model.addAttribute("comuni", comuni);
-        return "comuni";
+        return "index.html";
     }
 }

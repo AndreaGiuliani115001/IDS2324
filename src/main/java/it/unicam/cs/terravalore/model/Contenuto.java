@@ -20,8 +20,8 @@ public class Contenuto {
     private boolean stato; // In attesa, Approvato, Rifiutato
 
     @ManyToOne
-    @JoinColumn(name = "punto_interesse_id")
-    private PuntoInteresse puntoDiInteresse;
+    @JoinColumn(name = "puntoInteresseId")
+    private PuntoInteresse puntoInteresse;
 
     // Costruttore senza argomenti richiesto da JPA
     public Contenuto() {
@@ -33,13 +33,13 @@ public class Contenuto {
      * @param tipo             Il tipo di contenuto (Testo, Immagine, Video, ecc.).
      * @param dataCaricamento  La data di caricamento del contenuto.
      * @param stato            Lo stato del contenuto (In attesa, Approvato, Rifiutato).
-     * @param puntoDiInteresse Il punto di interesse associato al contenuto.
+     * @param puntoInteresse Il punto di interesse associato al contenuto.
      */
-    public Contenuto(String tipo, Date dataCaricamento, boolean stato, PuntoInteresse puntoDiInteresse) {
+    public Contenuto(String tipo, Date dataCaricamento, boolean stato, PuntoInteresse puntoInteresse) {
         this.tipo = tipo;
         this.dataCaricamento = dataCaricamento;
         this.stato = stato;
-        this.puntoDiInteresse = puntoDiInteresse;
+        this.puntoInteresse = puntoInteresse;
     }
 
     // Getter e Setter
@@ -76,10 +76,10 @@ public class Contenuto {
     }
 
     public PuntoInteresse getPuntoDiInteresse() {
-        return puntoDiInteresse;
+        return puntoInteresse;
     }
 
     public void setPuntoDiInteresse(PuntoInteresse puntoDiInteresse) {
-        this.puntoDiInteresse = puntoDiInteresse;
+        this.puntoInteresse = puntoDiInteresse;
     }
 }

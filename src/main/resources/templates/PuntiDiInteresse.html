@@ -3,30 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comuni</title>
-    <!-- Include Bootstrap CSS from CDN -->
+    <title>Punti di Interesse</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="text-center">Terr@Valore</h1>
-    <h2 class="text-center">Lista dei comuni</h2>
+    <h1 class="text-center">Punti di Interesse del Comune</h1>
     <div class="row">
-        <div class="col-12 mb-3">
-            <a href="/login" class="btn btn-primary">Login</a>
-        </div>
-        <div th:each="comune : ${comuni}" class="col-md-4 mb-4">
+        <div th:each="punto : ${puntiDiInteresse}" class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title" th:text="${comune.nome}"></h5>
-                    <p class="card-text" th:text="${comune.descrizione}"></p>
-                    <a th:href="@{/puntiInteresse/comune/{comuneId}(comuneId=${comune.id})}" class="btn btn-info">Visualizza Punti di Interesse</a>
+                    <h5 class="card-title" th:text="${punto.nome}">Nome Punto</h5>
+                    <p class="card-text" th:text="${punto.descrizione}">Descrizione</p>
+                    <p class="card-text"><strong>Tipo:</strong> <span th:text="${punto.tipo}">Tipo</span></p>
+                    <a th:href="@{/contenuti/puntoInteresse/{puntoId}(puntoId=${punto.id})}" class="btn btn-info">Visualizza
+                        Contenuti</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Include Bootstrap JS and dependencies from CDN -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

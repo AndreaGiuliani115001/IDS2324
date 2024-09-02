@@ -23,7 +23,7 @@ public class PuntoInteresse {
     @JoinColumn(name = "comune_id")
     private Comune comune;
 
-    @OneToMany(mappedBy = "puntoDiInteresse")
+    @OneToMany(mappedBy = "puntoInteresse")
     private List<Contenuto> contenuti;
 
     // Costruttore senza argomenti richiesto da JPA

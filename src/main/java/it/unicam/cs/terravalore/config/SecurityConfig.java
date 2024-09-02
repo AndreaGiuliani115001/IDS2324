@@ -17,14 +17,16 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())  // Disabilitare CSRF usando la configurazione lambda
                 .authorizeHttpRequests(auth -> auth  // Utilizzo di authorizeHttpRequests per le regole di autorizzazione
-                        .requestMatchers("/","/login", "/resources/**").permitAll()  // Usare requestMatchers al posto di antMatchers
+                        .requestMatchers("/","/login","/puntiInteresse/comune/**", "/contenuti/puntoInteresse/**").permitAll()  // Usare requestMatchers al posto di antMatchers
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/dashboard", true)
                         .permitAll())
-                .logout(logout -> logout.permitAll());
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/").permitAll());
         return http.build();
+
     }
 
     @Bean

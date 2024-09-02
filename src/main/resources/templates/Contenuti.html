@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenuti del Punto di Interesse</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Contenuti del Punto di Interesse</h1>
+    <div class="row">
+        <div th:each="contenuto : ${contenuti}" class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${contenuto.tipo}">Tipo Contenuto</h5>
+                    <p class="card-text"><strong>Data Caricamento:</strong> <span th:text="${#dates.format(contenuto.dataCaricamento, 'dd/MM/yyyy')}">Data Caricamento</span></p>
+                    <p class="mb-0"><strong>Stato:</strong> <span
+                            th:text="${contenuto.stato ? 'Approvato' : 'Non approvato'}">Stato</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Sezione visibile solo ai Contributori -->
+        <div th:if="${isContributore}">
+            <h2>Sezione Contributore</h2>
+            <!-- Contenuti specifici per il Contributore -->
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

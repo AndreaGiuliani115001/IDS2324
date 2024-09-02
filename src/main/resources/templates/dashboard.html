@@ -1,55 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punti di Interesse</title>
-    <!-- Include Bootstrap CSS from CDN -->
+    <title>Dashboard</title>
+    <!-- Include Bootstrap CSS from CDN for styling -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Punti di Interesse</h1>
+    <h1 class="text-center mb-4">Dashboard</h1>
     <div class="row">
-        <!-- Itera sulla lista dei punti di interesse e visualizzali -->
-        <th:block th:each="punto : ${puntiDiInteresse}">
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${punto.nome}">Nome Punto</h5>
-                        <p class="card-text" th:text="${punto.descrizione}">Descrizione Punto</p>
-                        <p class="card-text"><strong>Tipo:</strong> <span th:text="${punto.tipo}">Tipo Punto</span></p>
-
-                        <!-- Controlla se il punto di interesse ha un comune associato -->
-                        <p class="card-text" th:if="${punto.comune != null}">
-                            <strong>Comune:</strong> <span th:text="${punto.comune.nome}">Nome Comune</span>
-                        </p>
-
-                        <!-- Itera sulla lista dei contenuti per ogni punto di interesse -->
-                        <div>
-                            <h6>Contenuti</h6>
-                            <ul class="list-group list-group-flush">
-                                <th:block th:each="contenuto : ${punto.contenuti}">
-                                    <li class="list-group-item">
-                                        <p class="mb-0"><strong>Tipo:</strong> <span th:text="${contenuto.tipo}">Tipo Contenuto</span>
-                                        </p>
-                                        <p class="mb-0"><strong>Data Caricamento:</strong> <span
-                                                th:text="${#dates.format(contenuto.dataCaricamento, 'dd/MM/yyyy')}">Data Caricamento</span>
-                                        </p>
-                                        <p class="mb-0"><strong>Stato:</strong> <span
-                                                th:text="${contenuto.stato ? 'Approvato' : 'Non approvato'}">Stato</span>
-                                        </p>
-                                    </li>
-                                </th:block>
-                            </ul>
-                        </div>
-                    </div>
+        <!-- Itera sulla lista dei comuni disponibili per l'utente -->
+        <div class="col-md-4 mb-4" th:each="comune : ${comuni}">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${comune.nome}">Nome Comune</h5>
+                    <p class="card-text" th:text="${comune.descrizione}">Descrizione Comune</p>
+                    <!-- Link to view points of interest -->
+                    <a th:href="@{/puntiInteresse/comune/{comuneId}(comuneId=${comune.id})}" class="btn btn-primary">Visualizza
+                        Punti di Interesse</a>
                 </div>
             </div>
-        </th:block>
+        </div>
     </div>
 </div>
-
 <!-- Include Bootstrap JS and dependencies from CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

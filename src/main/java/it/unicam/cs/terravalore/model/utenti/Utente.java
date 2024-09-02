@@ -1,6 +1,9 @@
 package it.unicam.cs.terravalore.model.utenti;
 
+import it.unicam.cs.terravalore.model.Comune;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED) // Strategia JOINED per ereditarietà
@@ -13,6 +16,14 @@ public abstract class Utente {
     private String username;
     private String password;
     private boolean active;
+
+    @ManyToMany
+    @JoinTable(
+            name = "utente_comune", // Assicurati che il nome della tabella di join sia corretto
+            joinColumns = @JoinColumn(name = "utente_id"),
+            inverseJoinColumns = @JoinColumn(name = "comune_id")
+    )
+    private Set<Comune> comuniAssociati;
 
     // Getters and Setters
     public Long getId() {
@@ -45,5 +56,13 @@ public abstract class Utente {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public Set<Comune> getComuniAssociati() {
+        return comuniAssociati;
+    }
+
+    public void setComuniAssociati(Set<Comune> comuniAssociati) {
+        this.comuniAssociati = comuniAssociati;
     }
 }

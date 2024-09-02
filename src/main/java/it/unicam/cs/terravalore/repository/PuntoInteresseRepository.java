@@ -4,10 +4,13 @@ import it.unicam.cs.terravalore.model.PuntoInteresse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Il repository per accedere ai dati dei punti di interesse.
  */
 @Repository
 public interface PuntoInteresseRepository extends JpaRepository<PuntoInteresse, Long> {
+    List<PuntoInteresse> findByComuneId(Long comuneId);
 }
 

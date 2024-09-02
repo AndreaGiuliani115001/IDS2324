@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -15,10 +16,10 @@ public class ContenutoController {
     @Autowired
     private ContenutoService contenutoService;
 
-    @GetMapping("/contenuti")
-    public String getContenuti(Model model) {
-        List<Contenuto> contenuti = contenutoService.findAll();
+    @GetMapping("/contenuti/puntoInteresse/{puntoId}")
+    public String mostraContenutiPerPuntoInteresse(@PathVariable("puntoId") Long puntoId, Model model) {
+        List<Contenuto> contenuti = contenutoService.findByPuntoInteresseId(puntoId);
         model.addAttribute("contenuti", contenuti);
-        return "contenuti";
+        return "contenuti";  // Vista Thymeleaf per i contenuti di un punto di interesse
     }
 }
