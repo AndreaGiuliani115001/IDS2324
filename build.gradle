@@ -22,10 +22,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.security:spring-security-config'
     runtimeOnly 'com.h2database:h2:1.4.200'
-
-
-
-
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.5.RELEASE'
 }
 
 test {

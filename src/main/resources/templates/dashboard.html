@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <!-- Include Bootstrap CSS from CDN for styling -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<!-- Include Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 <div class="container mt-5">
     <h1 class="text-center mb-4">Dashboard</h1>
+
     <div class="row">
-        <!-- Itera sulla lista dei comuni disponibili per l'utente -->
-        <div class="col-md-4 mb-4" th:each="comune : ${comuni}">
-            <div class="card">
+        <div th:each="comune : ${comuni}" class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${comune.nome}">Nome Comune</h5>
                     <p class="card-text" th:text="${comune.descrizione}">Descrizione Comune</p>
-                    <!-- Link to view points of interest -->
                     <a th:href="@{/puntiInteresse/comune/{comuneId}(comuneId=${comune.id})}" class="btn btn-primary">Visualizza
                         Punti di Interesse</a>
                 </div>
@@ -25,7 +25,7 @@
         </div>
     </div>
 </div>
-<!-- Include Bootstrap JS and dependencies from CDN -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
