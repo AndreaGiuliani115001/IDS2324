@@ -26,7 +26,7 @@ public class PuntoInteresse {
     @OneToMany(mappedBy = "puntoInteresse")
     private List<Contenuto> contenuti;
 
-    // Costruttore senza argomenti richiesto da JPA
+
     public PuntoInteresse() {
     }
 
@@ -47,7 +47,7 @@ public class PuntoInteresse {
         this.contenuti = contenuti;
     }
 
-    // Getter e Setter
+
     public Long getId() {
         return id;
     }

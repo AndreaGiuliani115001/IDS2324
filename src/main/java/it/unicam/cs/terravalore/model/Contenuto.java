@@ -23,7 +23,7 @@ public class Contenuto {
     @JoinColumn(name = "puntoInteresseId")
     private PuntoInteresse puntoInteresse;
 
-    // Costruttore senza argomenti richiesto da JPA
+
     public Contenuto() {
     }
 
@@ -42,7 +42,7 @@ public class Contenuto {
         this.puntoInteresse = puntoInteresse;
     }
 
-    // Getter e Setter
+
     public Long getId() {
         return id;
     }

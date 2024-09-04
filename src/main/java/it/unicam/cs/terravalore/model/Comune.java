@@ -29,7 +29,7 @@ public class Comune {
     @ManyToMany(mappedBy = "comuniAssociati")
     private Set<Utente> utenti;
 
-    // Costruttore senza argomenti richiesto da JPA
+
     public Comune() {
     }
 
@@ -48,7 +48,6 @@ public class Comune {
         this.itinerari = itinerari;
     }
 
-    // Getter e Setter
     public Long getId() {
         return id;
     }

@@ -31,7 +31,7 @@ public class Itinerario {
     )
     private List<PuntoInteresse> listaPuntiDiInteresse;
 
-    // Costruttore senza argomenti richiesto da JPA
+
     public Itinerario() {
     }
 
@@ -52,7 +52,7 @@ public class Itinerario {
         this.listaPuntiDiInteresse = listaPuntiDiInteresse;
     }
 
-    // Getter e Setter
+
     public Long getId() {
         return id;
     }

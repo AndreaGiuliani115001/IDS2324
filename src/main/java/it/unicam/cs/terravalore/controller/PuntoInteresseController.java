@@ -1,6 +1,5 @@
 package it.unicam.cs.terravalore.controller;
 
-
 import it.unicam.cs.terravalore.config.CustomUserDetails;
 import it.unicam.cs.terravalore.model.PuntoInteresse;
 import it.unicam.cs.terravalore.model.utenti.*;
@@ -18,18 +17,32 @@ import java.util.List;
 
 /**
  * Il controller per gestire le richieste relative ai punti di interesse.
+ * Questa classe è responsabile di recuperare i dati dei punti di interesse
+ * per un determinato comune e di gestire la visualizzazione basata sul tipo di utente autenticato.
  */
 @Controller
 public class PuntoInteresseController {
 
     @Autowired
     private PuntoInteresseService puntoInteresseService;
+
     @Autowired
     private UtenteRepository utenteRepository;
 
-
+    /**
+     * Gestisce la richiesta GET per visualizzare i punti di interesse associati a un comune specifico.
+     * Il metodo recupera i punti di interesse tramite il servizio {@link PuntoInteresseService} e li passa al modello
+     * per essere visualizzati. Inoltre, imposta attributi nel modello per identificare il tipo di utente autenticato.
+     *
+     * @param comuneId    L'ID del comune di cui visualizzare i punti di interesse.
+     * @param userDetails I dettagli dell'utente autenticato.
+     * @param model       Il modello utilizzato per passare dati alla vista.
+     * @return Il nome del template Thymeleaf da visualizzare ("puntiDiInteresse").
+     */
     @GetMapping("/puntiInteresse/comune/{comuneId}")
-    public String mostraPuntiDiInteressePerComune(@PathVariable("comuneId") Long comuneId, @AuthenticationPrincipal UserDetails userDetails, Model model) {
+    public String mostraPuntiDiInteressePerComune(@PathVariable("comuneId") Long comuneId,
+                                                  @AuthenticationPrincipal UserDetails userDetails,
+                                                  Model model) {
         List<PuntoInteresse> puntiDiInteresse = puntoInteresseService.findByComuneId(comuneId);
         model.addAttribute("puntiDiInteresse", puntiDiInteresse);
 
@@ -54,6 +67,4 @@ public class PuntoInteresseController {
 
         return "puntiDiInteresse";  // Nome della view Thymeleaf
     }
-
 }
-
